@@ -23,6 +23,7 @@ python-dotenv = "*"
 langchainhub = "*"
 langchain-experimental = "*"
 qrcode = "*"
+pillow = "*"
 
 [dev-packages]
 
