@@ -35,12 +35,12 @@ def main():
         llm=ChatOpenAI(temperature=0, model="gpt-4"),
         path="episode_info.csv",
         verbose=True,
-        allow_dangerous_code=True
+        allow_dangerous_code=True,
     )
-    
+
     def python_agent_executor_wrapper(original_prompt: str) -> dict[str, Any]:
         return python_agent_executor.invoke({"input": original_prompt})
-    
+
     tools = [
         Tool(
             name="Python Agent",
@@ -72,7 +72,7 @@ def main():
             }
         )
     )
-    
+
     print(
         grand_agent_executor.invoke(
             {

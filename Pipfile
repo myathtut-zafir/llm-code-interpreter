@@ -26,6 +26,7 @@ qrcode = "*"
 pillow = "*"
 pandas = "*"
 tabulate = "*"
+langchain-anthropic = "*"
 
 [dev-packages]
 

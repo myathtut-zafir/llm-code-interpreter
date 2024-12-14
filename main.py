@@ -36,7 +36,7 @@ def main():
         llm=ChatOpenAI(temperature=0, model="gpt-4"),
         path="episode_info.csv",
         verbose=True,
-        allow_dangerous_code=True
+        allow_dangerous_code=True,
     )
     csv_agent.invoke(
         input={"input": "how many columns are there in file episode_info.csv"}
