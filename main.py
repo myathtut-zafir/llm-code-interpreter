@@ -16,22 +16,22 @@ def main():
     You might know the answer without running any code, but you should still run the code to get the answer.
     If it does not seem like you can write code to answer the question, just return "I don't know" as the answer.
     """
-    # base_prompt = hub.pull("langchain-ai/react-agent-template")
-    # prompt = base_prompt.partial(instructions=instructions)
+    base_prompt = hub.pull("langchain-ai/react-agent-template")
+    prompt = base_prompt.partial(instructions=instructions)
 
     tools = [PythonREPLTool()]
-    # agent = create_react_agent(
-    #     prompt=prompt,
-    #     llm=ChatOpenAI(temperature=0, model="gpt-4-turbo"),
-    #     tools=tools,
-    # )
-    # agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-    # agent_executor.invoke(
-    #     input={
-    #         "input": """generate and save in current working directory 15 QRcodes
-    #                             that point to www.udemy.com/course/langchain, you have qrcode package installed already"""
-    #     }
-    # )
+    agent = create_react_agent(
+        prompt=prompt,
+        llm=ChatOpenAI(temperature=0, model="gpt-4-turbo"),
+        tools=tools,
+    )
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    agent_executor.invoke(
+        input={
+            "input": """generate and save in current working directory 15 QRcodes
+                                that point to www.udemy.com/course/langchain, you have qrcode package installed already"""
+        }
+    )
     csv_agent = create_csv_agent(
         llm=ChatOpenAI(temperature=0, model="gpt-4"),
         path="episode_info.csv",
